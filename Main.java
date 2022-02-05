@@ -1,10 +1,15 @@
-import java.util.ArrayList;
-
 public class Main {
     // TODO phase 2 part 3 (for file manager class to implement data resources interface)
 
+    static FileManager fm = new FileManager();
+    
     public static void main(String[] args) {
-        FileManager fm = new FileManager();
-        System.out.println(fm.getAllClients().size()); 
+
+        
+
+    }
+
+    protected void finalize() {
+        fm.saveDataToFiles();
     }
 }
