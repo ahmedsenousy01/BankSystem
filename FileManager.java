@@ -5,15 +5,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-public class FileManager implements DataSource{
+public class FileManager implements DataSource{    
 
-    private ArrayList<Client> clients = new ArrayList<>();
-    private ArrayList<Admin> admins = new ArrayList<>();
-    private ArrayList<Employee> employees = new ArrayList<>();
-
-    
-
-    public ArrayList<Client> getAllClients() {
+    public ArrayList<Client> getAllClients(ArrayList<Client> clients) {
         try {
             FileReader fr = new FileReader("client.txt");
             BufferedReader br = new BufferedReader(fr);
@@ -31,7 +25,7 @@ public class FileManager implements DataSource{
         return clients;  
     }
 
-    public ArrayList<Admin> getAllAdmins() {
+    public ArrayList<Admin> getAllAdmins(ArrayList<Admin> admins) {
         try{
             FileReader fr = new FileReader("admin.txt");
             BufferedReader br = new BufferedReader(fr);
@@ -49,7 +43,7 @@ public class FileManager implements DataSource{
         return admins;
     }
 
-    public ArrayList<Employee> getAllEmployees() {
+    public ArrayList<Employee> getAllEmployees(ArrayList<Employee> employees) {
         try{
             FileReader fr = new FileReader("employee.txt");
             BufferedReader br = new BufferedReader(fr);
@@ -67,15 +61,15 @@ public class FileManager implements DataSource{
         return employees;  
     }
 
-    public void removeAllClients() {
+    public void removeAllClients(ArrayList<Client> clients) {
         clients.clear();
     }
 
-    public void removeAllAdmins() {
+    public void removeAllAdmins(ArrayList<Admin> admins) {
         admins.clear();
     }
 
-    public void removeAllEmployees() {
+    public void removeAllEmployees(ArrayList<Employee> employees) {
         employees.clear();
     }
 
