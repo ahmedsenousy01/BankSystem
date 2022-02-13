@@ -25,16 +25,20 @@ public class Main {
         
         System.out.println("Enter username:");
         attemptedUserName = sc.next();
-        System.out.println("Enter pin code:");
+        System.out.println("Enter pin code or password:");
         attemptedPinCode = sc.next();
         
         switch(loginMenuNumber) {
             case 1:
-                cm.adminLogin(admins);
+                Admin currAdmin = null;
+                if(cm.adminLogin(admins, attemptedUserName, attemptedPinCode, currAdmin)) {
+                    cm.printAdminMenu();
+                } else {
+
+                }
                 break;
             case 2:
                 Client currClient = null;
-                //cm.clientLogin(clients, attemptedUserName, attemptedPinCode, currClient);
                 if(cm.clientLogin(clients, attemptedUserName, attemptedPinCode,currClient)) {
                     cm.printClientMenu();
                     System.out.println("done");
@@ -42,8 +46,13 @@ public class Main {
                     System.out.println("Invalid Login Data");
                 }
                 break;
-            case 3:
-                cm.employeeLogin(employees);
+            case 3: 
+                Employee currEmployee = null;
+                if(cm.employeeLogin(employees , attemptedUserName, attemptedPinCode, currEmployee)) {
+                    cm.printEmployeeMenu();
+                } else {
+
+                }
                 break;
         }
 

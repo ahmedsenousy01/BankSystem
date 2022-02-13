@@ -23,42 +23,28 @@ public class ClientManager {
         return false;
     }
     
-    boolean adminLogin(ArrayList<Admin> admins) {
-        String attemptedUserName, attemptedPassword;
-        try(Scanner sc = new Scanner(System.in)) {
-            System.out.println("Enter username:");
-            attemptedUserName = sc.nextLine();
-            System.out.println("Enter pin code:");
-            attemptedPassword = sc.nextLine();
-            
-            for(int i = 0; i < admins.size(); i++) {
-                if(admins.get(i).get_name() == attemptedUserName) {
-                    if(admins.get(i).get_password() == attemptedPassword) {
-                        return true;
-                    }
+    boolean adminLogin(ArrayList<Admin> admins, String attemptedUserName, String attemptedPassword, Admin currAdmin) {
+        for(int i = 0; i < admins.size(); i++) {
+            if(admins.get(i).get_name().equals(attemptedUserName)) {
+                if(admins.get(i).get_password().equals(attemptedPassword)) {
+                    currAdmin = admins.get(i);
+                    return true;
                 }
             }
-            return false;
         }
+        return false;
     }
     
-    boolean employeeLogin(ArrayList<Employee> employees) {
-        String attemptedUserName, attemptedPassword;
-        try(Scanner sc = new Scanner(System.in)) {
-            System.out.println("Enter username:");
-            attemptedUserName = sc.nextLine();
-            System.out.println("Enter pin code:");
-            attemptedPassword = sc.nextLine();
-            
-            for(int i = 0; i < employees.size(); i++) {
-                if(employees.get(i).get_name() == attemptedUserName) {
-                    if(employees.get(i).get_password() == attemptedPassword) {
-                        return true;
-                    }
+    boolean employeeLogin(ArrayList<Employee> employees, String attemptedUserName, String attemptedPassword, Employee currEmployee) {
+        for(int i = 0; i < employees.size(); i++) {
+            if(employees.get(i).get_name().equals(attemptedUserName)) {
+                if(employees.get(i).get_password().equals(attemptedPassword)) {
+                    currEmployee = employees.get(i);
+                    return true;
                 }
             }
-            return false;
         }
+        return false;
     }
 
     void printMenu(int option) {
@@ -76,15 +62,15 @@ public class ClientManager {
     }
     
     void printClientMenu() {
-        
+        System.out.println("Choose a number:\n1-Deposit\n2-Withdraw\n3-Transfer\n4-Check your balance\n5-Logout");
     }
     
     void printEmployeeMenu() {
-
+        System.out.println("Choose a number:\n1-Add Client\n2-Search for Client by ID\n3-List all Clients\n4-Display your Info\n5-Logout");
     }
     
     void printAdminMenu() {
-
+        System.out.println("Choose a number:\n1-Add Employee\n2-Search for Employee by ID\n3-List all Employees\n4-Display your Info\n5-Add Client\n6-Search for Client by ID\n7-List all Clients\n8-Logout");
     }
 
 }
