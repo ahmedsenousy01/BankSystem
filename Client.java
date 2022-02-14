@@ -44,6 +44,23 @@ public class Client extends User{
         System.out.println("pin code : " + this.get_pin_code());
     }
 
+    void deposite(Double depositedAmount) {
+        this.set_balance((balance + depositedAmount));
+    }
+
+    void withdraw(Double withdrawalAmount) {
+        this.set_balance(balance - withdrawalAmount);
+    }
+
+    void transferTo(Client receivingClient, Double transferAmount) {
+        this.set_balance(balance - transferAmount);
+        receivingClient.set_balance(balance + transferAmount);
+    }
+
+    void logout() {
+
+    }
+
     Client(String name, String pin_code, double balance) {
         super.set_name(name);
         this.set_pin_code(pin_code);
@@ -51,4 +68,6 @@ public class Client extends User{
         super.id = client_id;
         client_id++;
     }
+
+    Client(){}
 }
